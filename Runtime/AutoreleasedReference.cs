@@ -2,6 +2,31 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
+    public struct AutoreleasedReference : IConvertibleToId
+    {
+        public Id Target;
+
+        public AutoreleasedReference(Id value)
+        {
+            Target = value;
+        }
+
+        public void Release()
+        {
+            throw new InvalidOperationException("Cannot release an autoreleased object");
+        }
+
+        public Id ToId()
+        {
+            return Target;
+        }
+        
+        public static implicit operator Id(AutoreleasedReference autoreleasedObject)
+        {
+            return autoreleasedObject.Target;
+        }
+    }
+
     public struct AutoreleasedReference<T> : IConvertibleToId
         where T : struct, IConvertibleToId
     {

@@ -51,7 +51,7 @@ namespace Gilzoide.ObjectiveC
             return obj.ToId().RespondsToSelector(selector);
         }
 
-        public static StrongReference<Id> Retain<TSelf>(this TSelf obj)
+        public static StrongReference Retain<TSelf>(this TSelf obj)
             where TSelf : IConvertibleToId
         {
             return obj.ToId().Retain();
@@ -61,12 +61,12 @@ namespace Gilzoide.ObjectiveC
         {
             obj.ToId().Release();
         }
-        public static AutoreleasedReference<Id> Autorelease<TSelf>(this TSelf obj)
+        public static AutoreleasedReference Autorelease<TSelf>(this TSelf obj)
             where TSelf : IConvertibleToId
         {
             return obj.ToId().Autorelease();
         }
-        public static AutoreleasedReference<Id> RetainAutorelease<TSelf>(this TSelf obj)
+        public static AutoreleasedReference RetainAutorelease<TSelf>(this TSelf obj)
             where TSelf : IConvertibleToId
         {
             return obj.ToId().RetainAutorelease();

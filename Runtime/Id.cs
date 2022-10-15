@@ -45,7 +45,7 @@ namespace Gilzoide.ObjectiveC
 
         #region Memory management
 
-        public StrongReference<Id> Retain()
+        public StrongReference Retain()
         {
             return Runtime.objc_retain(this);
         }
@@ -55,12 +55,12 @@ namespace Gilzoide.ObjectiveC
             Runtime.objc_release(this);
         }
 
-        public AutoreleasedReference<Id> Autorelease()
+        public AutoreleasedReference Autorelease()
         {
             return Runtime.objc_autorelease(this);
         }
 
-        public AutoreleasedReference<Id> RetainAutorelease()
+        public AutoreleasedReference RetainAutorelease()
         {
             return Runtime.objc_retainAutorelease(this);
         }

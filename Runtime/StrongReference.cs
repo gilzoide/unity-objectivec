@@ -2,6 +2,31 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
+    public struct StrongReference : IConvertibleToId, IDisposable
+    {
+        public Id Target;
+
+        public StrongReference(Id value)
+        {
+            Target = value;
+        }
+
+        public Id ToId()
+        {
+            return Target;
+        }
+
+        public void Dispose()
+        {
+            Target.Release();
+        }
+
+        public static implicit operator Id(StrongReference strongReference)
+        {
+            return strongReference.Target;
+        }
+    }
+
     public struct StrongReference<T> : IConvertibleToId, IDisposable
         where T : struct, IConvertibleToId
     {

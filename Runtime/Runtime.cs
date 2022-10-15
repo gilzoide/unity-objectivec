@@ -467,16 +467,16 @@ namespace Gilzoide.ObjectiveC
         #region Memory management
 
         [DllImport("__Internal")]
-        public extern static StrongReference<Id> objc_retain(Id obj);
+        public extern static StrongReference objc_retain(Id obj);
 
         [DllImport("__Internal")]
         public extern static void objc_release(Id obj);
 
         [DllImport("__Internal")]
-        public extern static AutoreleasedReference<Id> objc_autorelease(Id obj);
+        public extern static AutoreleasedReference objc_autorelease(Id obj);
 
         [DllImport("__Internal")]
-        public extern static AutoreleasedReference<Id> objc_retainAutorelease(Id value);
+        public extern static AutoreleasedReference objc_retainAutorelease(Id value);
 
         [DllImport("__Internal")]
         public extern static AutoreleasePool.Context objc_autoreleasePoolPush();
