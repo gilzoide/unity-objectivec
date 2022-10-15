@@ -100,14 +100,14 @@ namespace Gilzoide.ObjectiveC
 
         #region Creating instances
 
-        public Id Alloc(Selector initSelector)
+        public StrongReference<Id> Alloc(Selector initSelector)
         {
-            return ToId().Call<Id>("alloc").Call<Id>(initSelector);
+            return ToId().Call<Id>("alloc").Call<StrongReference<Id>>(initSelector);
         }
 
-        public Id Alloc(Selector initSelector, params ValueType[] args)
+        public StrongReference<Id> Alloc(Selector initSelector, params ValueType[] args)
         {
-            return ToId().Call<Id>("alloc").Call<Id>(initSelector, args);
+            return ToId().Call<Id>("alloc").Call<StrongReference<Id>>(initSelector, args);
         }
 
         #endregion

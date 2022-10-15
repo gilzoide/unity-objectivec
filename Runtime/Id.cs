@@ -2,7 +2,7 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct Id
+    public struct Id : IConvertibleToId
     {
         public static readonly Id Nil = new Id { RawPtr = IntPtr.Zero };
 
@@ -45,7 +45,7 @@ namespace Gilzoide.ObjectiveC
 
         #region Memory management
 
-        public Id Retain()
+        public StrongReference<Id> Retain()
         {
             return Runtime.objc_retain(this);
         }
@@ -55,12 +55,12 @@ namespace Gilzoide.ObjectiveC
             Runtime.objc_release(this);
         }
 
-        public Id Autorelease()
+        public AutoreleasedReference<Id> Autorelease()
         {
             return Runtime.objc_autorelease(this);
         }
 
-        public Id RetainAutorelease()
+        public AutoreleasedReference<Id> RetainAutorelease()
         {
             return Runtime.objc_retainAutorelease(this);
         }
@@ -85,6 +85,11 @@ namespace Gilzoide.ObjectiveC
         }
 
         #endregion
+
+        public Id ToId()
+        {
+            return this;
+        }
 
         public static bool operator==(Id self, Id other)
         {
