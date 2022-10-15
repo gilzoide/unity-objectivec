@@ -20,6 +20,11 @@ namespace Gilzoide.ObjectiveC
         {
             return Target;
         }
+
+        public override string ToString()
+        {
+            return Target.ToString();
+        }
         
         public static implicit operator Id(AutoreleasedReference autoreleasedObject)
         {
@@ -45,6 +50,11 @@ namespace Gilzoide.ObjectiveC
         public Id ToId()
         {
             return Target.ToId();
+        }
+
+        public override string ToString()
+        {
+            return Target.ToString();
         }
 
         public static implicit operator T(AutoreleasedReference<T> autoreleasedObject)

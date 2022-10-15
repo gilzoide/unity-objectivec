@@ -107,5 +107,15 @@ namespace Gilzoide.ObjectiveC.Foundation
         {
             return _self;
         }
+
+        public override string ToString()
+        {
+            return _self.ToString();
+        }
+
+        public static implicit operator Id(NSNumber n)
+        {
+            return n._self;
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace Gilzoide.ObjectiveC
 
         public override string ToString()
         {
-            return RawPtr.ToString();
+            return Call<NSString>("description").ToString();
         }
 
         public override bool Equals(object obj)

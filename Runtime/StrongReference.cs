@@ -21,6 +21,11 @@ namespace Gilzoide.ObjectiveC
             Target.Release();
         }
 
+        public override string ToString()
+        {
+            return Target.ToString();
+        }
+
         public static implicit operator Id(StrongReference strongReference)
         {
             return strongReference.Target;
@@ -45,6 +50,11 @@ namespace Gilzoide.ObjectiveC
         public void Dispose()
         {
             ToId().Release();
+        }
+
+        public override string ToString()
+        {
+            return Target.ToString();
         }
 
         public static implicit operator T(StrongReference<T> strongReference)
