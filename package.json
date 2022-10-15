@@ -2,7 +2,7 @@
   "name": "com.gilzoide.objectivec",
   "displayName": "Objective-C",
   "version": "1.0.0",
-  "description": "High level C# to Objective-C interface, similar to AndroidJavaClass/AndroidJavaObject",
+  "description": "High level C# to Objective-C interface, similar to AndroidJavaClass and AndroidJavaObject",
   "homepage": "https://github.com/gilzoide/unity-objectivec",
   "license": "Unlicense",
   "author": {
