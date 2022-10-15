@@ -16,7 +16,7 @@ namespace Gilzoide.ObjectiveC
 
         public string CopyAttributeValue(string attributeName)
         {
-            using (AutoFreeCString str = Runtime.property_copyAttributeValue(this, attributeName))
+            using (DisposableCString str = Runtime.property_copyAttributeValue(this, attributeName))
             {
                 return str.ToString();
             }

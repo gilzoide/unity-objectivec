@@ -26,11 +26,11 @@ namespace Gilzoide.ObjectiveC
         public extern static int objc_getClassList([In, Out] Class[] buffer, int bufferCount);
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Class> objc_copyClassList(out uint outCount);
+        public extern static DisposablePointer<Class> objc_copyClassList(out uint outCount);
 
         public static Class[] objc_copyClassList()
         {
-            using (AutoFreePointer<Class> list = objc_copyClassList(out uint count))
+            using (DisposablePointer<Class> list = objc_copyClassList(out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -65,11 +65,11 @@ namespace Gilzoide.ObjectiveC
         public extern static Ivar class_getClassVariable(Class cls, string name);
     
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Ivar> class_copyIvarList(Class cls, out uint outCount);
+        public extern static DisposablePointer<Ivar> class_copyIvarList(Class cls, out uint outCount);
 
         public static Ivar[] class_copyIvarList(Class cls)
         {
-            using (AutoFreePointer<Ivar> list = class_copyIvarList(cls, out uint count))
+            using (DisposablePointer<Ivar> list = class_copyIvarList(cls, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -91,11 +91,11 @@ namespace Gilzoide.ObjectiveC
         public extern static bool class_respondsToSelector(Class cls, Selector sel);
     
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Method> class_copyMethodList(Class cls, out uint outCount);
+        public extern static DisposablePointer<Method> class_copyMethodList(Class cls, out uint outCount);
 
         public static Method[] class_copyMethodList(Class cls)
         {
-            using (AutoFreePointer<Method> list = class_copyMethodList(cls, out uint count))
+            using (DisposablePointer<Method> list = class_copyMethodList(cls, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -105,11 +105,11 @@ namespace Gilzoide.ObjectiveC
         public extern static bool class_conformsToProtocol(Class cls, Protocol protocol);
         
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Protocol> class_copyProtocolList(Class cls, out uint outCount);
+        public extern static DisposablePointer<Protocol> class_copyProtocolList(Class cls, out uint outCount);
 
         public static Protocol[] class_copyProtocolList(Class cls)
         {
-            using (AutoFreePointer<Protocol> list = class_copyProtocolList(cls, out uint count))
+            using (DisposablePointer<Protocol> list = class_copyProtocolList(cls, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -119,11 +119,11 @@ namespace Gilzoide.ObjectiveC
         public extern static Property class_getProperty(Class cls, string name);
     
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Property> class_copyPropertyList(Class cls, out uint outCount);
+        public extern static DisposablePointer<Property> class_copyPropertyList(Class cls, out uint outCount);
 
         public static Property[] class_copyPropertyList(Class cls)
         {
-            using (AutoFreePointer<Property> list = class_copyPropertyList(cls, out uint count))
+            using (DisposablePointer<Property> list = class_copyPropertyList(cls, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -242,10 +242,10 @@ namespace Gilzoide.ObjectiveC
         public extern static uint method_getNumberOfArguments(Method m);
     
         [DllImport("__Internal")]
-        public extern static AutoFreeCString method_copyReturnType(Method m);
+        public extern static DisposableCString method_copyReturnType(Method m);
     
         [DllImport("__Internal")]
-        public extern static AutoFreeCString method_copyArgumentType(Method m, uint index);
+        public extern static DisposableCString method_copyArgumentType(Method m, uint index);
     
         [DllImport("__Internal")]
         public extern static void method_getReturnType(Method m, [In, Out] byte[] dst, UIntPtr dst_len);
@@ -288,18 +288,18 @@ namespace Gilzoide.ObjectiveC
     
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<PropertyAttribute> property_copyAttributeList(Property property, out uint outCount);
+        public extern static DisposablePointer<PropertyAttribute> property_copyAttributeList(Property property, out uint outCount);
 
         public static PropertyAttribute[] property_copyAttributeList(Property property)
         {
-            using (AutoFreePointer<PropertyAttribute> list = property_copyAttributeList(property, out uint count))
+            using (DisposablePointer<PropertyAttribute> list = property_copyAttributeList(property, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
         }
     
         [DllImport("__Internal", CharSet = CharSet.Ansi)]
-        public extern static AutoFreeCString property_copyAttributeValue(Property property, string attributeName);
+        public extern static DisposableCString property_copyAttributeValue(Property property, string attributeName);
     
         #endregion
 
@@ -309,11 +309,11 @@ namespace Gilzoide.ObjectiveC
         public extern static Protocol objc_getProtocol(string name);
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Protocol> objc_copyProtocolList(out uint outCount);
+        public extern static DisposablePointer<Protocol> objc_copyProtocolList(out uint outCount);
 
         public static Protocol[] objc_copyProtocolList()
         {
-            using (AutoFreePointer<Protocol> list = objc_copyProtocolList(out uint count))
+            using (DisposablePointer<Protocol> list = objc_copyProtocolList(out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -332,11 +332,11 @@ namespace Gilzoide.ObjectiveC
         public extern static MethodDescription protocol_getMethodDescription(Protocol proto, Selector aSel, bool isRequiredMethod, bool isInstanceMethod);
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<MethodDescription> protocol_copyMethodDescriptionList(Protocol proto, bool isRequiredMethod, bool isInstanceMethod, out uint outCount);
+        public extern static DisposablePointer<MethodDescription> protocol_copyMethodDescriptionList(Protocol proto, bool isRequiredMethod, bool isInstanceMethod, out uint outCount);
     
         public static MethodDescription[] protocol_copyMethodDescriptionList(Protocol proto, bool isRequiredMethod, bool isInstanceMethod)
         {
-            using (AutoFreePointer<MethodDescription> list = protocol_copyMethodDescriptionList(proto, isRequiredMethod, isInstanceMethod, out uint count))
+            using (DisposablePointer<MethodDescription> list = protocol_copyMethodDescriptionList(proto, isRequiredMethod, isInstanceMethod, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -346,33 +346,33 @@ namespace Gilzoide.ObjectiveC
         public extern static Property protocol_getProperty(Protocol proto, string name, bool isRequiredProperty, bool isInstanceProperty);
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Property> protocol_copyPropertyList(Protocol proto, out uint outCount);
+        public extern static DisposablePointer<Property> protocol_copyPropertyList(Protocol proto, out uint outCount);
     
         public static Property[] protocol_copyPropertyList(Protocol proto)
         {
-            using (AutoFreePointer<Property> list = protocol_copyPropertyList(proto, out uint count))
+            using (DisposablePointer<Property> list = protocol_copyPropertyList(proto, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
         }
 
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Property> protocol_copyPropertyList2(Protocol proto, out uint outCount, bool isRequiredProperty, bool isInstanceProperty);
+        public extern static DisposablePointer<Property> protocol_copyPropertyList2(Protocol proto, out uint outCount, bool isRequiredProperty, bool isInstanceProperty);
 
         public static Property[] protocol_copyPropertyList2(Protocol proto, bool isRequiredProperty, bool isInstanceProperty)
         {
-            using (AutoFreePointer<Property> list = protocol_copyPropertyList2(proto, out uint count, isRequiredProperty, isInstanceProperty))
+            using (DisposablePointer<Property> list = protocol_copyPropertyList2(proto, out uint count, isRequiredProperty, isInstanceProperty))
             {
                 return list.ToArrayOfSize(count);
             }
         }
     
         [DllImport("__Internal")]
-        public extern static AutoFreePointer<Protocol> protocol_copyProtocolList(Protocol proto, out uint outCount);
+        public extern static DisposablePointer<Protocol> protocol_copyProtocolList(Protocol proto, out uint outCount);
 
         public static Protocol[] protocol_copyProtocolList(Protocol proto)
         {
-            using (AutoFreePointer<Protocol> list = protocol_copyProtocolList(proto, out uint count))
+            using (DisposablePointer<Protocol> list = protocol_copyProtocolList(proto, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -398,11 +398,11 @@ namespace Gilzoide.ObjectiveC
         #region Working with Libraries
 
         [DllImport("__Internal", CharSet = CharSet.Ansi)]
-        public extern static AutoFreePointer<CString> objc_copyImageNames(out uint outCount);
+        public extern static DisposablePointer<CString> objc_copyImageNames(out uint outCount);
     
         public static CString[] objc_copyImageNames()
         {
-            using (AutoFreePointer<CString> list = objc_copyImageNames(out uint count))
+            using (DisposablePointer<CString> list = objc_copyImageNames(out uint count))
             {
                 return list.ToArrayOfSize(count);
             }
@@ -413,11 +413,11 @@ namespace Gilzoide.ObjectiveC
     
 
         [DllImport("__Internal", CharSet = CharSet.Ansi)]
-        public extern static AutoFreePointer<CString> objc_copyClassNamesForImage(string image, out uint outCount);
+        public extern static DisposablePointer<CString> objc_copyClassNamesForImage(string image, out uint outCount);
 
         public static CString[] objc_copyClassNamesForImage(string image)
         {
-            using (AutoFreePointer<CString> list = objc_copyClassNamesForImage(image, out uint count))
+            using (DisposablePointer<CString> list = objc_copyClassNamesForImage(image, out uint count))
             {
                 return list.ToArrayOfSize(count);
             }

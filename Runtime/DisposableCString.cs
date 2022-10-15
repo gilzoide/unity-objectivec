@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct AutoFreeCString : IDisposable
+    public struct DisposableCString : IDisposable
     {
         public IntPtr RawPtr;
 

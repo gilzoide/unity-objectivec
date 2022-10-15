@@ -15,7 +15,7 @@ namespace Gilzoide.ObjectiveC
         
         public string GetReturnType()
         {
-            using (AutoFreeCString str = Runtime.method_copyReturnType(this))
+            using (DisposableCString str = Runtime.method_copyReturnType(this))
             {
                 return str.ToString();
             }
@@ -23,7 +23,7 @@ namespace Gilzoide.ObjectiveC
 
         public string GetArgumentType(uint index)
         {
-            using (AutoFreeCString str = Runtime.method_copyArgumentType(this, index))
+            using (DisposableCString str = Runtime.method_copyArgumentType(this, index))
             {
                 return str.ToString();
             }

@@ -4,7 +4,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 namespace Gilzoide.ObjectiveC
 {
-    public unsafe struct AutoFreePointer<T> : IDisposable where T : struct
+    public unsafe struct DisposablePointer<T> : IDisposable where T : struct
     {
         public IntPtr RawPtr;
 
