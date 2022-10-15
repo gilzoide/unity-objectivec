@@ -4,10 +4,13 @@ namespace Gilzoide.ObjectiveC
 {
     public struct Class : IConvertibleToId
     {
+        private static Selector Selector_alloc = "alloc";
+
         public IntPtr RawPtr;
 
         public string Name => Runtime.class_getName(this).ToString();
         public bool IsMetaClass => Runtime.class_isMetaClass(this);
+        public Class MetaClass => ToId().Class;
         public Class Superclass => Runtime.class_getSuperclass(this);
         public int Version
         {
@@ -60,7 +63,7 @@ namespace Gilzoide.ObjectiveC
 
         public bool RespondsToSelector(Selector selector)
         {
-            return ((Id) this).RespondsToSelector(selector);
+            return Runtime.class_respondsToSelector(MetaClass, selector);
         }
 
         public bool InstancesRespondToSelector(Selector selector)
@@ -102,12 +105,12 @@ namespace Gilzoide.ObjectiveC
 
         public StrongReference Alloc(Selector initSelector)
         {
-            return ToId().Call<Id>("alloc").Call<StrongReference>(initSelector);
+            return ToId().Call<Id>(Selector_alloc).Call<StrongReference>(initSelector);
         }
 
         public StrongReference Alloc(Selector initSelector, params ValueType[] args)
         {
-            return ToId().Call<Id>("alloc").Call<StrongReference>(initSelector, args);
+            return ToId().Call<Id>(Selector_alloc).Call<StrongReference>(initSelector, args);
         }
 
         #endregion
