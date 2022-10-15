@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 using System;
 using System.Runtime.InteropServices;
 using Unity.Collections.LowLevel.Unsafe;
@@ -82,4 +81,3 @@ namespace Gilzoide.ObjectiveC
         }
     }
 }
-#endif

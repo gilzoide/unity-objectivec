@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 using System;
 using System.Runtime.InteropServices;
 
@@ -14,4 +13,3 @@ namespace Gilzoide.ObjectiveC
         }
     }
 }
-#endif

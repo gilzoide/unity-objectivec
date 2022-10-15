@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 namespace Gilzoide.ObjectiveC
 {
     public static class TypeEncoding
@@ -48,4 +47,3 @@ namespace Gilzoide.ObjectiveC
         public const char C_GNUREGISTER = '+';
     }
 }
-#endif

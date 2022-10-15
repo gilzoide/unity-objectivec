@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 namespace Gilzoide.ObjectiveC
 {
     public struct Super
@@ -7,4 +6,3 @@ namespace Gilzoide.ObjectiveC
         public Class SuperClass;
     }
 }
-#endif

@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 using System;
 
 namespace Gilzoide.ObjectiveC
@@ -54,4 +53,3 @@ namespace Gilzoide.ObjectiveC
         }
     }
 }
-#endif

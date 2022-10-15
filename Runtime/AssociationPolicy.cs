@@ -1,4 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
 namespace Gilzoide.ObjectiveC
 {
     public enum AssociationPolicy : ulong
@@ -14,4 +13,3 @@ namespace Gilzoide.ObjectiveC
                                *   The association is made atomically. */
     }
 }
-#endif

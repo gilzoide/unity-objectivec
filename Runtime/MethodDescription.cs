@@ -1,6 +1,3 @@
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
-using System;
-
 namespace Gilzoide.ObjectiveC
 {
     public struct MethodDescription
@@ -9,4 +6,3 @@ namespace Gilzoide.ObjectiveC
         public CString Types;
     }
 }
-#endif
