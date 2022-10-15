@@ -2,7 +2,7 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct Class
+    public struct Class : IConvertibleToId
     {
         public IntPtr RawPtr;
 
@@ -100,47 +100,26 @@ namespace Gilzoide.ObjectiveC
 
         #region Creating instances
 
-        public Id Alloc()
-        {
-            return Alloc("init");
-        }
-
         public Id Alloc(Selector initSelector)
         {
-            return Call<Id>("alloc").Call<Id>(initSelector);
+            return ToId().Call<Id>("alloc").Call<Id>(initSelector);
         }
 
         public Id Alloc(Selector initSelector, params ValueType[] args)
         {
-            return Call<Id>("alloc").Call<Id>(initSelector, args);
+            return ToId().Call<Id>("alloc").Call<Id>(initSelector, args);
         }
 
         #endregion
 
-        #region Calling methods
-
-        public void Call(Selector selector)
+        public Id ToId()
         {
-            MethodInvocation.Invoke(this, selector);
+            return new Id(RawPtr);
         }
-        public T Call<T>(Selector selector) where T : struct
-        {
-            return MethodInvocation.Invoke<T>(this, selector);
-        }
-        public void Call(Selector selector, params ValueType[] args)
-        {
-            MethodInvocation.Invoke(this, selector, args);
-        }
-        public T Call<T>(Selector selector, params ValueType[] args) where T : struct
-        {
-            return MethodInvocation.Invoke<T>(this, selector, args);
-        }
-
-        #endregion
 
         public static implicit operator Id(Class c)
         {
-            return new Id(c.RawPtr);
+            return c.ToId();
         }
     }
 }
