@@ -19,6 +19,7 @@ namespace Gilzoide.ObjectiveC
         public void Dispose()
         {
             Target.Release();
+            Target = Id.Nil;
         }
 
         public override string ToString()
@@ -50,6 +51,7 @@ namespace Gilzoide.ObjectiveC
         public void Dispose()
         {
             ToId().Release();
+            Target = default;
         }
 
         public override string ToString()
