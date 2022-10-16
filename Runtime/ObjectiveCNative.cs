@@ -5,10 +5,16 @@ namespace Gilzoide.ObjectiveC
 {
     public static class ObjectiveCNative
     {
-        [DllImport("ObjectiveCNative.dylib")]
+#if UNITY_IOS && !UNITY_EDITOR
+        private const string _dllName = "__Internal";
+#else
+        private const string _dllName = "ObjectiveCNative.dylib";
+#endif
+
+        [DllImport(_dllName)]
         public static extern Id Gilzoide_ObjectiveC_NSInvocationProtectedInvoke(Id invocation);
 
-        [DllImport("ObjectiveCNative.dylib")]
+        [DllImport(_dllName)]
         public static extern void Gilzoide_ObjectiveC_BlockWithPointer(out Block block, IntPtr functionPointer);
     }
 }
