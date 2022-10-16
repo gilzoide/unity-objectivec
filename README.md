@@ -15,6 +15,7 @@ using Gilzoide.Objective.C;
 
 void Alert(string message)
 {
+#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
   // Get existing Objective-C classes using `new Class("...")`
   Class NSApplication = new Class("NSApplication");
   // Use `Call` to send messages to an Id or Class using selectors
@@ -52,5 +53,8 @@ void Alert(string message)
       alert.Call("beginSheetModalForWindow:completionHandler:", keyWindow, blockByReference);
     }
   }
+#else
+  Debug.Log("Unsupported platform");
+#endif
 }
 ```

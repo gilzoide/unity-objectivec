@@ -8,5 +8,12 @@
   "author": {
     "name": "Gil Barbosa Reis"
   },
-  "unity": "2018.1"
+  "unity": "2018.1",
+  "samples": [
+    {
+      "displayName": "macOS NSAlert",
+      "description": "Sample code that presents a native macOS alert",
+      "path": "Samples~/macOS-NSAlert"
+    }
+  ]
 }
