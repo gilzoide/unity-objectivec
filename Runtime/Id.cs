@@ -87,7 +87,7 @@ namespace Gilzoide.ObjectiveC
 
         public override string ToString()
         {
-            return Call<NSString>("description").ToString();
+            return new NSString(Runtime.objc_msgSend(this, "description")).ToString();
         }
 
         public override bool Equals(object obj)
