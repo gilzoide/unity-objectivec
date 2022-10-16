@@ -14,7 +14,12 @@ namespace Gilzoide.ObjectiveC
         [DllImport("__Internal", EntryPoint = "objc_msgSend", CharSet = CharSet.Unicode)]
         public static extern NSString objc_msgSend_charp_ulong(Id obj, Selector selector, string str, ulong length);
 
+        [DllImport("__Internal")]
+        public static extern long CFStringGetLength(NSString theString);
+
         private Id _self;
+
+        public long Length => CFStringGetLength(this);
 
         public NSString(Id self)
         {
@@ -40,8 +45,8 @@ namespace Gilzoide.ObjectiveC
 
         public override string ToString()
         {
-            IntPtr dataPtr = _self.Call<IntPtr>(Selector_UTF8String);
-            return Marshal.PtrToStringUTF8(dataPtr);
+            IntPtr dataPtr = Runtime.objc_msgSend(_self, Selector_UTF8String).RawPtr;
+            return Marshal.PtrToStringAnsi(dataPtr);
         }
 
         public static implicit operator Id(NSString str)
