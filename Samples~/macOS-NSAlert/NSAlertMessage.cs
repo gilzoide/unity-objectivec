@@ -50,10 +50,10 @@ public class NSAlertMessage : MonoBehaviour
             // `DisposablePinnedObject` is a disposable wrapper over `GCHandle`
             using (DisposablePinnedObject pinnedBlock = new DisposablePinnedObject(block))
             {
-            IntPtr blockByReference = pinnedBlock.Address;
+                IntPtr blockByReference = pinnedBlock.Address;
 
-            // You can pass any number of struct values as parameters
-            alert.Call("beginSheetModalForWindow:completionHandler:", keyWindow, blockByReference);
+                // You can pass any number of struct values as parameters
+                alert.Call("beginSheetModalForWindow:completionHandler:", keyWindow, blockByReference);
             }
         }
 #else
