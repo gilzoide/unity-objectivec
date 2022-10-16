@@ -12,6 +12,9 @@ namespace Gilzoide.ObjectiveC
         public bool IsClass => Class.IsMetaClass;
         public bool IsNil => this == Nil;
 
+        public string Description => new NSString(Runtime.objc_msgSend(this, "description")).ToString();
+        public string DebugDescription => new NSString(Runtime.objc_msgSend(this, "debugDescription")).ToString();
+
         public Id(IntPtr rawPtr)
         {
             RawPtr = rawPtr;
@@ -87,7 +90,7 @@ namespace Gilzoide.ObjectiveC
 
         public override string ToString()
         {
-            return new NSString(Runtime.objc_msgSend(this, "description")).ToString();
+            return Description;
         }
 
         public override bool Equals(object obj)

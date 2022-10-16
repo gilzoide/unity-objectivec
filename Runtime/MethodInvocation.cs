@@ -25,9 +25,6 @@ namespace Gilzoide.ObjectiveC
         [DllImport("__Internal", EntryPoint = "objc_msgSend")]
         public static extern Id objc_msgSend_voidp(Id self, Selector _cmd, void* arg1);
 
-        [DllImport("ObjectiveCNative.dylib")]
-        private static extern Id Gilzoide_ObjectiveC_NSInvocationInvoke(Id invocation);
-
         public static Id GetMethodInvocation(Id target, Selector selector)
         {
             Method method = target.IsClass
@@ -99,10 +96,13 @@ namespace Gilzoide.ObjectiveC
 
         private static void ProtectedInvoke(Id invocation)
         {
-            Id exception = Gilzoide_ObjectiveC_NSInvocationInvoke(invocation);
+            Id exception = ObjectiveCNative.Gilzoide_ObjectiveC_NSInvocationProtectedInvoke(invocation);
             if (!exception.IsNil)
             {
-                throw new ObjectiveCException(exception.ToString());
+                string name = exception.Get<NSString>("name").ToString();
+                string reason = exception.Get<NSString>("reason").ToString();
+                Id userInfo = exception.Get<Id>("userInfo");
+                throw new ObjectiveCException(name, reason, userInfo);
             }
         }
     }

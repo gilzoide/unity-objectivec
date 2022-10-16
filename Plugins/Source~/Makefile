@@ -24,3 +24,5 @@ FRAMEWORKS = -framework Foundation
 # targets
 osx: ../macOS/ObjectiveCNative.dylib
 ios: ../iOS/ObjectiveCNative.dylib
+
+all: osx ios
