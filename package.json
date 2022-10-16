@@ -14,6 +14,11 @@
       "displayName": "macOS NSAlert",
       "description": "Sample code that presents a native macOS alert",
       "path": "Samples~/macOS-NSAlert"
+    },
+    {
+      "displayName": "iOS UIFeedbackGenerator",
+      "description": "Sample code that plays haptics using UIImpactFeedbackGenerator on iOS",
+      "path": "Samples~/iOS-UIFeedbackGenerator"
     }
   ]
 }

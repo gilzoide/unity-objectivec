@@ -1,7 +1,7 @@
 SRC = ObjectiveCNative.m
 CC = clang
 LIPO = lipo
-CFLAGS = -fno-objc-arc
+CFLAGS = -fobjc-exceptions
 FRAMEWORKS = -framework Foundation
 
 # macOS libraries (each arch + universal)

@@ -1,0 +1,15 @@
+{
+    "name": "Gilzoide.ObjectiveC.Sample.UIFeedbackGenerator",
+    "references": [
+        "GUID:668d51d8af8e248b2a5294541a29d3c6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -9,6 +9,12 @@ This plugin offers some `IDisposable` structures to facilitate this, like `Stron
 You are responsible for releasing objects you own, as well as knowing which objects are `autorelease`d and should not be `release`d again.
 
 
+## Samples
+This UPM package has 2 samples:
+- [macOS NSAlert](Samples~/macOS-NSAlert): Sample code that presents a native macOS alert
+- [iOS UIFeedbackGenerator](Samples~/iOS-UIFeedbackGenerator): Sample code that plays haptics using UIImpactFeedbackGenerator on iOS
+
+
 ## Usage example
 ```cs
 using Gilzoide.Objective.C;
