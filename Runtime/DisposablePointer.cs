@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using Unity.Collections.LowLevel.Unsafe;
 
 namespace Gilzoide.ObjectiveC
@@ -16,15 +15,10 @@ namespace Gilzoide.ObjectiveC
         public T[] ToArrayOfSize(uint size)
         {
             T[] managedArray = new T[size];
-            GCHandle gcHandle = GCHandle.Alloc(managedArray, GCHandleType.Pinned);
-            try
+            using (var pin = new DisposablePinnedObject(managedArray))
             {
-                UnsafeUtility.MemCpy((void*) gcHandle.AddrOfPinnedObject(), (void*) RawPtr, UnsafeUtility.SizeOf<T>() * size);
+                UnsafeUtility.MemCpy((void*) pin.Address, (void*) RawPtr, UnsafeUtility.SizeOf<T>() * size);
                 return managedArray;
-            }
-            finally
-            {
-                gcHandle.Free();
             }
         }
     }
