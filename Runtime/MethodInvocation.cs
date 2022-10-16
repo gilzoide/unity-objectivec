@@ -26,9 +26,21 @@ namespace Gilzoide.ObjectiveC
 
         public static Id GetMethodInvocation(Id target, Selector selector)
         {
-            CString types = target.IsClass
-                ? new Class(target.RawPtr).GetClassMethod(selector).Description->Types
-                : target.Class.GetInstanceMethod(selector).Description->Types;
+            Method method = target.IsClass
+                ? new Class(target.RawPtr).GetClassMethod(selector)
+                : target.Class.GetInstanceMethod(selector);
+            if (method.IsNil)
+            {
+                if (target.IsClass)
+                {
+                    throw new ObjectiveCException($"Unrecognized selector '{selector}' sent to class '{new Class(target.RawPtr)}'");    
+                }
+                else
+                {
+                    throw new ObjectiveCException($"Unrecognized selector '{selector}' sent to instance of class '{target.Class}'");
+                }
+            }
+            CString types = method.Description->Types;
             Id signature = objc_msgSend_IntPtr(NSMethodSignature, Selector_signatureWithObjCTypes, types.RawPtr);
             Id invocation = objc_msgSend_IntPtr(NSInvocation, Selector_invocationWithMethodSignature, signature.RawPtr);
             objc_msgSend_IntPtr(invocation, Selector_setSelector, selector.RawPtr);

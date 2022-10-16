@@ -6,16 +6,16 @@ namespace Gilzoide.ObjectiveC.Foundation
 
         private Id _self;
 
-        public bool BoolValue => _self.Call<bool>("boolValue");
-        public char CharValue => _self.Call<char>("charValue");
-        public double DoubleValue => _self.Call<double>("doubleValue");
-        public float FloatValue => _self.Call<float>("floatValue");
-        public int IntValue => _self.Call<int>("intValue");
-        public long LongValue => _self.Call<long>("longValue");
-        public short ShortValue => _self.Call<short>("shortValue");
-        public uint UnsignedIntValue => _self.Call<uint>("unsignedIntValue");
-        public ulong UnsignedLongValue => _self.Call<ulong>("unsignedLongValue");
-        public ushort UnsignedShortValue => _self.Call<ushort>("unsignedShortValue");
+        public bool BoolValue => _self.Get<bool>("boolValue");
+        public char CharValue => _self.Get<char>("charValue");
+        public double DoubleValue => _self.Get<double>("doubleValue");
+        public float FloatValue => _self.Get<float>("floatValue");
+        public int IntValue => _self.Get<int>("intValue");
+        public long LongValue => _self.Get<long>("longValue");
+        public short ShortValue => _self.Get<short>("shortValue");
+        public uint UnsignedIntValue => _self.Get<uint>("unsignedIntValue");
+        public ulong UnsignedLongValue => _self.Get<ulong>("unsignedLongValue");
+        public ushort UnsignedShortValue => _self.Get<ushort>("unsignedShortValue");
 
         public NSNumber(Id self)
         {

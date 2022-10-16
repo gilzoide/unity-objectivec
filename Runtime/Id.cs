@@ -22,6 +22,22 @@ namespace Gilzoide.ObjectiveC
             return Runtime.class_respondsToSelector(Class, selector);
         }
 
+        #region Accessing properties
+
+        public T Get<T>(string propertyName) where T : struct
+        {
+            Selector getSelector = propertyName;
+            return Call<T>(getSelector);
+        }
+
+        public void Set<T>(string propertyName, T value) where T : struct
+        {
+            Selector setSelector = $"set{char.ToUpper(propertyName[0])}{propertyName.Substring(1)}:";
+            Call(setSelector, value);
+        }
+
+        #endregion
+
         #region Call methods
 
         public void Call(Selector selector)

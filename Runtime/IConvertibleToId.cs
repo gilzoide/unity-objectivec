@@ -10,6 +10,26 @@ namespace Gilzoide.ObjectiveC
     public static class IConvertibleToIdExtensions
     {
         // Notice that this call boxes `obj`
+        public static T Get<T>(this IConvertibleToId obj, string propertyName)
+            where T : struct
+        {
+            return obj.ToId().Get<T>(propertyName);
+        }
+        public static T Get<TSelf, T>(this TSelf obj, string propertyName)
+            where TSelf : IConvertibleToId
+            where T : struct
+        {
+            return obj.ToId().Get<T>(propertyName);
+        }
+
+        public static void Set<TSelf, T>(this TSelf obj, string propertyName, T value)
+            where TSelf : IConvertibleToId
+            where T : struct
+        {
+            obj.ToId().Set(propertyName, value);
+        }
+
+        // Notice that this call boxes `obj`
         public static T Call<T>(this IConvertibleToId obj, Selector selector)
             where T : struct
         {

@@ -6,6 +6,8 @@ namespace Gilzoide.ObjectiveC
     {
         public IntPtr RawPtr;
 
+        public bool IsNil => RawPtr == IntPtr.Zero;
+
         public Selector Selector => Runtime.method_getName(this);
         public string Name => Selector.ToString();
         public IntPtr Implementation => Runtime.method_getImplementation(this);
