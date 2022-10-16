@@ -18,7 +18,7 @@ public class NSAlertMessage : MonoBehaviour
 
     public static void Alert(string message)
     {
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS
+#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX  // || UNITY_IOS (NSAlert is not support in iOS)
         // Get existing Objective-C classes using `new Class("...")`
         Class NSApplication = new Class("NSApplication");
         // Use `Call` to send messages to an Id or Class using selectors
