@@ -1,6 +1,3 @@
 *.o
 *.o.meta
-*.dylib
-*.dylib.meta
-*.framework
-*.framework.meta
+*.dylib~
