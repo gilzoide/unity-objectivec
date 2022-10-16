@@ -11,6 +11,7 @@ namespace Gilzoide.ObjectiveC
         public static readonly Selector Selector_signatureWithObjCTypes = "signatureWithObjCTypes:";
         public static readonly Selector Selector_invocationWithMethodSignature = "invocationWithMethodSignature:";
         public static readonly Selector Selector_setSelector = "setSelector:";
+        public static readonly Selector Selector_setTarget = "setTarget:";
         public static readonly Selector Selector_setArgument_atIndex = "setArgument:atIndex:";
         public static readonly Selector Selector_invokeWithTarget = "invokeWithTarget:";
         public static readonly Selector Selector_getReturnValue = "getReturnValue:";
@@ -23,6 +24,9 @@ namespace Gilzoide.ObjectiveC
 
         [DllImport("__Internal", EntryPoint = "objc_msgSend")]
         public static extern Id objc_msgSend_voidp(Id self, Selector _cmd, void* arg1);
+
+        [DllImport("ObjectiveCNative.dylib")]
+        private static extern Id Gilzoide_ObjectiveC_NSInvocationInvoke(Id invocation);
 
         public static Id GetMethodInvocation(Id target, Selector selector)
         {
@@ -43,6 +47,7 @@ namespace Gilzoide.ObjectiveC
             CString types = method.Description->Types;
             Id signature = objc_msgSend_IntPtr(NSMethodSignature, Selector_signatureWithObjCTypes, types.RawPtr);
             Id invocation = objc_msgSend_IntPtr(NSInvocation, Selector_invocationWithMethodSignature, signature.RawPtr);
+            objc_msgSend_IntPtr(invocation, Selector_setTarget, target.RawPtr);
             objc_msgSend_IntPtr(invocation, Selector_setSelector, selector.RawPtr);
             return invocation;
         }
@@ -50,7 +55,7 @@ namespace Gilzoide.ObjectiveC
         public static Id Invoke(Id target, Selector selector)
         {
             Id invocation = GetMethodInvocation(target, selector);
-            objc_msgSend_IntPtr(invocation, Selector_invokeWithTarget, target.RawPtr);
+            ProtectedInvoke(invocation);
             return invocation;
         }
         public static T Invoke<T>(Id target, Selector selector) where T : struct
@@ -73,7 +78,7 @@ namespace Gilzoide.ObjectiveC
                     gcHandles[i] = gcHandle;
                     objc_msgSend_IntPtr_Int(invocation, Selector_setArgument_atIndex, gcHandle.AddrOfPinnedObject(), 2 + i);
                 }
-                objc_msgSend_IntPtr(invocation, Selector_invokeWithTarget, target.RawPtr);
+                ProtectedInvoke(invocation);
             }
             finally
             {
@@ -90,6 +95,15 @@ namespace Gilzoide.ObjectiveC
             T retValue = default;
             objc_msgSend_voidp(invocation, Selector_getReturnValue, UnsafeUtility.AddressOf(ref retValue));
             return retValue;
+        }
+
+        private static void ProtectedInvoke(Id invocation)
+        {
+            Id exception = Gilzoide_ObjectiveC_NSInvocationInvoke(invocation);
+            if (!exception.IsNil)
+            {
+                throw new ObjectiveCException(exception.ToString());
+            }
         }
     }
 }
