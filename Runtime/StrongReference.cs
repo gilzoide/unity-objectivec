@@ -2,7 +2,7 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct StrongReference : IConvertibleToId, IDisposable
+    public struct StrongReference : IId, IDisposable
     {
         public Id Target;
 
@@ -11,10 +11,7 @@ namespace Gilzoide.ObjectiveC
             Target = value;
         }
 
-        public Id ToId()
-        {
-            return Target;
-        }
+        public Id AsId => Target;
 
         public void Dispose()
         {
@@ -33,8 +30,8 @@ namespace Gilzoide.ObjectiveC
         }
     }
 
-    public struct StrongReference<T> : IConvertibleToId, IDisposable
-        where T : struct, IConvertibleToId
+    public struct StrongReference<T> : IId, IDisposable
+        where T : struct, IId
     {
         public T Target;
 
@@ -43,14 +40,11 @@ namespace Gilzoide.ObjectiveC
             Target = value;
         }
 
-        public Id ToId()
-        {
-            return Target.ToId();
-        }
+        public Id AsId => Target.AsId;
 
         public void Dispose()
         {
-            ToId().Release();
+            AsId.Release();
             Target = default;
         }
 
@@ -65,7 +59,7 @@ namespace Gilzoide.ObjectiveC
         }
         public static implicit operator Id(StrongReference<T> strongReference)
         {
-            return strongReference.ToId();
+            return strongReference.AsId;
         }
     }
 }

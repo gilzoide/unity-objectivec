@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Gilzoide.ObjectiveC.Foundation
 {
-    public struct NSArray : IConvertibleToId, IReadOnlyCollection<Id>
+    public struct NSArray : IId, IReadOnlyCollection<Id>
     {
         public static readonly Class Class = new Class("NSArray");
 
@@ -45,10 +45,7 @@ namespace Gilzoide.ObjectiveC.Foundation
             return new AutoreleasedReference<NSArray>(objc_msgSend_idp_ulong(Class, "arrayWithObjects:count:", objects, (ulong) objects.Length));
         }
 
-        public Id ToId()
-        {
-            return _self;
-        }
+        public Id AsId => _self;
 
         public IEnumerator<Id> GetEnumerator()
         {

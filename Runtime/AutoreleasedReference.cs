@@ -2,7 +2,7 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct AutoreleasedReference : IConvertibleToId
+    public struct AutoreleasedReference : IId
     {
         public Id Target;
 
@@ -16,10 +16,7 @@ namespace Gilzoide.ObjectiveC
             throw new InvalidOperationException("Cannot release an autoreleased object");
         }
 
-        public Id ToId()
-        {
-            return Target;
-        }
+        public Id AsId => Target;
 
         public override string ToString()
         {
@@ -32,8 +29,8 @@ namespace Gilzoide.ObjectiveC
         }
     }
 
-    public struct AutoreleasedReference<T> : IConvertibleToId
-        where T : struct, IConvertibleToId
+    public struct AutoreleasedReference<T> : IId
+        where T : struct, IId
     {
         public T Target;
 
@@ -47,10 +44,7 @@ namespace Gilzoide.ObjectiveC
             throw new InvalidOperationException("Cannot release an autoreleased object");
         }
 
-        public Id ToId()
-        {
-            return Target.ToId();
-        }
+        public Id AsId => Target.AsId;
 
         public override string ToString()
         {
@@ -63,7 +57,7 @@ namespace Gilzoide.ObjectiveC
         }
         public static implicit operator Id(AutoreleasedReference<T> autoreleasedObject)
         {
-            return autoreleasedObject.ToId();
+            return autoreleasedObject.AsId;
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Gilzoide.ObjectiveC;
-using System;
+using Gilzoide.ObjectiveC.Foundation;
 
 public class NSAlertMessage : MonoBehaviour
 {

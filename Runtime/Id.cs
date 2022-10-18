@@ -1,8 +1,9 @@
 using System;
+using Gilzoide.ObjectiveC.Foundation;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct Id : IConvertibleToId
+    public struct Id : IId
     {
         public static readonly Id Nil = new Id { RawPtr = IntPtr.Zero };
 
@@ -105,10 +106,7 @@ namespace Gilzoide.ObjectiveC
 
         #endregion
 
-        public Id ToId()
-        {
-            return this;
-        }
+        public Id AsId => this;
 
         public static bool operator==(Id self, Id other)
         {

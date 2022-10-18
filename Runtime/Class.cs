@@ -2,15 +2,13 @@ using System;
 
 namespace Gilzoide.ObjectiveC
 {
-    public struct Class : IConvertibleToId
+    public struct Class : IId
     {
-        private static Selector Selector_alloc = "alloc";
-
         public IntPtr RawPtr;
 
         public string Name => Runtime.class_getName(this).ToString();
         public bool IsMetaClass => Runtime.class_isMetaClass(this);
-        public Class MetaClass => ToId().Class;
+        public Class MetaClass => AsId.Class;
         public Class Superclass => Runtime.class_getSuperclass(this);
         public int Version
         {
@@ -105,24 +103,21 @@ namespace Gilzoide.ObjectiveC
 
         public StrongReference Alloc(Selector initSelector)
         {
-            return ToId().Call<Id>(Selector_alloc).Call<StrongReference>(initSelector);
+            return Runtime.objc_msgSend(this, "alloc").Call<StrongReference>(initSelector);
         }
 
         public StrongReference Alloc(Selector initSelector, params ValueType[] args)
         {
-            return ToId().Call<Id>(Selector_alloc).Call<StrongReference>(initSelector, args);
+            return Runtime.objc_msgSend(this, "alloc").Call<StrongReference>(initSelector, args);
         }
 
         #endregion
 
-        public Id ToId()
-        {
-            return new Id(RawPtr);
-        }
+        public Id AsId => new Id(RawPtr);
 
         public static implicit operator Id(Class c)
         {
-            return c.ToId();
+            return c.AsId;
         }
     }
 }

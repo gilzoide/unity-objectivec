@@ -460,6 +460,15 @@ namespace Gilzoide.ObjectiveC
         public extern static Id objc_msgSend(Id obj, Selector selector, Id arg1, Id arg2);
 
         [DllImport("__Internal")]
+        public extern static Id objc_msgSend(Id obj, Selector selector, CString cstring);
+
+        [DllImport("__Internal")]
+        public extern static Id objc_msgSend(Id obj, Selector selector, IntPtr ptr);
+
+        [DllImport("__Internal")]
+        public static extern Id objc_msgSend(Id self, Selector _cmd, IntPtr arg1, int arg2);
+
+        [DllImport("__Internal")]
         public extern static Id objc_msgSendSuper(ref Super super, Selector selector);
 
         #endregion

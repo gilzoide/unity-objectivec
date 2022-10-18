@@ -1,6 +1,6 @@
 namespace Gilzoide.ObjectiveC.Foundation
 {
-    public struct NSNumber : IConvertibleToId
+    public struct NSNumber : IId
     {
         public static readonly Class Class = new Class("NSNumber");
 
@@ -64,49 +64,46 @@ namespace Gilzoide.ObjectiveC.Foundation
 
         public static AutoreleasedReference<NSNumber> NumberWith(bool b)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithBool:", b));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithBool:", b));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(char c)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithChar:", c));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithChar:", c));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(double d)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithDouble:", d));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithDouble:", d));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(float f)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithFloat:", f));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithFloat:", f));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(int i)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithInt:", i));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithInt:", i));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(long l)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithLong:", l));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithLong:", l));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(short s)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithShort:", s));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithShort:", s));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(uint i)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithUnsignedInt:", i));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedInt:", i));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(ulong l)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithUnsignedLong:", l));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedLong:", l));
         }
         public static AutoreleasedReference<NSNumber> NumberWith(ushort s)
         {
-            return new AutoreleasedReference<NSNumber>(Class.ToId().Call<NSNumber>("numberWithUnsignedShort:", s));
+            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedShort:", s));
         }
 
-        public Id ToId()
-        {
-            return _self;
-        }
+        public Id AsId => _self;
 
         public override string ToString()
         {
