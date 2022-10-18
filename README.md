@@ -17,7 +17,9 @@ This UPM package has 2 samples:
 
 ## Usage example
 ```cs
-using Gilzoide.Objective.C;
+using Gilzoide.ObjectiveC;
+using Gilzoide.ObjectiveC.Foundation;
+using UnityEngine;
 
 void Alert(string message)
 {
