@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Gilzoide.ObjectiveC.Foundation;
 
 namespace Gilzoide.ObjectiveC
 {
@@ -12,7 +13,7 @@ namespace Gilzoide.ObjectiveC
 #endif
 
         [DllImport(_dllName)]
-        public static extern Id Gilzoide_ObjectiveC_NSInvocationProtectedInvoke(Id invocation);
+        public static extern Id Gilzoide_ObjectiveC_NSInvocationProtectedInvoke(NSInvocation invocation);
 
         [DllImport(_dllName)]
         public static extern void Gilzoide_ObjectiveC_BlockWithPointer(out Block block, IntPtr functionPointer);

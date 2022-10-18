@@ -46,19 +46,19 @@ namespace Gilzoide.ObjectiveC
 
         public void Call(Selector selector)
         {
-            MethodInvocation.Invoke(this, selector);
+            NSInvocation.InvocationWith(this, selector).Target.Invoke();
         }
         public T Call<T>(Selector selector) where T : struct
         {
-            return MethodInvocation.Invoke<T>(this, selector);
+            return NSInvocation.InvocationWith(this, selector).Target.Invoke<T>();
         }
         public void Call(Selector selector, params ValueType[] args)
         {
-            MethodInvocation.Invoke(this, selector, args);
+            NSInvocation.InvocationWith(this, selector).Target.Invoke(args);
         }
         public T Call<T>(Selector selector, params ValueType[] args) where T : struct
         {
-            return MethodInvocation.Invoke<T>(this, selector, args);
+            return NSInvocation.InvocationWith(this, selector).Target.Invoke<T>(args);
         }
 
         #endregion
