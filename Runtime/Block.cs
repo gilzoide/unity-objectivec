@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace Gilzoide.ObjectiveC
 {
-    public unsafe struct Block
+    public struct Block
     {
         private IntPtr isa;
         private int flags;
@@ -21,7 +21,7 @@ namespace Gilzoide.ObjectiveC
             }
 
             Type firstParameterType = parameters[0].ParameterType;
-            if (Marshal.SizeOf(firstParameterType) != sizeof(Id))
+            if (Marshal.SizeOf(firstParameterType) != IntPtr.Size)
             {
                 throw new ObjectiveCException("Block delegate's first parameter must be 'Id' or have the size of a pointer");
             }

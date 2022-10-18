@@ -7,11 +7,6 @@ namespace Gilzoide.ObjectiveC
     {
         public IntPtr RawPtr;
 
-        public void Dispose()
-        {
-            Runtime.free(RawPtr);
-        }
-
         public T[] ToArrayOfSize(uint size)
         {
             T[] managedArray = new T[size];
@@ -20,6 +15,11 @@ namespace Gilzoide.ObjectiveC
                 UnsafeUtility.MemCpy((void*) pin.Address, (void*) RawPtr, UnsafeUtility.SizeOf<T>() * size);
                 return managedArray;
             }
+        }
+
+        public void Dispose()
+        {
+            Runtime.free(RawPtr);
         }
     }
 }
