@@ -515,7 +515,7 @@ namespace Gilzoide.ObjectiveC
         public extern static Id objc_retainBlock(Id value);
 
         [DllImport("__Internal")]
-        public extern static void objc_storeStrong(ref StrongReference<Id> obj, Id value);
+        public extern static void objc_storeStrong(ref StrongReference obj, Id value);
 
         [DllImport("__Internal")]
         public extern static Id objc_storeWeak(ref Id obj, Id value);

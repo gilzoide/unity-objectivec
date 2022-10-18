@@ -59,5 +59,9 @@ namespace Gilzoide.ObjectiveC
         {
             return autoreleasedObject.AsId;
         }
+        public static implicit operator AutoreleasedReference(AutoreleasedReference<T> autoreleasedObject)
+        {
+            return new AutoreleasedReference(autoreleasedObject.AsId);
+        }
     }
 }

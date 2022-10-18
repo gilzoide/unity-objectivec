@@ -61,5 +61,9 @@ namespace Gilzoide.ObjectiveC
         {
             return strongReference.AsId;
         }
+        public static implicit operator StrongReference(StrongReference<T> strongReference)
+        {
+            return new StrongReference(strongReference.AsId);
+        }
     }
 }
