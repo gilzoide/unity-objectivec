@@ -35,6 +35,10 @@ namespace Gilzoide.ObjectiveC
             return _self.ToString();
         }
 
+        public static explicit operator NSMethodSignature(Id obj)
+        {
+            return new NSMethodSignature(obj);
+        }
         public static implicit operator Id(NSMethodSignature signature)
         {
             return signature._self;

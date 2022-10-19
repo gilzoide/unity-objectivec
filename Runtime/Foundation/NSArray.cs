@@ -62,6 +62,10 @@ namespace Gilzoide.ObjectiveC.Foundation
             return _self.ToString();
         }
 
+        public static explicit operator NSArray(Id obj)
+        {
+            return new NSArray(obj);
+        }
         public static implicit operator Id(NSArray arr)
         {
             return arr._self;

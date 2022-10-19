@@ -23,6 +23,10 @@ namespace Gilzoide.ObjectiveC
             return Target.ToString();
         }
         
+        public static explicit operator AutoreleasedReference(Id obj)
+        {
+            return new AutoreleasedReference(obj);
+        }
         public static implicit operator Id(AutoreleasedReference autoreleasedObject)
         {
             return autoreleasedObject.Target;
@@ -51,6 +55,10 @@ namespace Gilzoide.ObjectiveC
             return Target.ToString();
         }
 
+        public static explicit operator AutoreleasedReference<T>(T value)
+        {
+            return new AutoreleasedReference<T>(value);
+        }
         public static implicit operator T(AutoreleasedReference<T> autoreleasedObject)
         {
             return autoreleasedObject.Target;

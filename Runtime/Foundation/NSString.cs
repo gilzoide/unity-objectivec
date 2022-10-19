@@ -43,6 +43,14 @@ namespace Gilzoide.ObjectiveC.Foundation
             return Marshal.PtrToStringAnsi(dataPtr);
         }
 
+        public static explicit operator NSString(string s)
+        {
+            return StringWith(s);
+        }
+        public static explicit operator NSString(Id obj)
+        {
+            return new NSString(obj);
+        }
         public static implicit operator Id(NSString str)
         {
             return str._self;

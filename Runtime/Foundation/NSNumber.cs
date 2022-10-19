@@ -21,86 +21,86 @@ namespace Gilzoide.ObjectiveC.Foundation
         {
             _self = self;
         }
-        public static StrongReference<NSNumber> Alloc(bool b)
+        public static StrongReference<NSNumber> Alloc(bool value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithBool:", b)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithBool:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(char c)
+        public static StrongReference<NSNumber> Alloc(char value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithChar:", c)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithChar:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(double d)
+        public static StrongReference<NSNumber> Alloc(double value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithDouble:", d)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithDouble:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(float f)
+        public static StrongReference<NSNumber> Alloc(float value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithFloat:", f)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithFloat:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(int i)
+        public static StrongReference<NSNumber> Alloc(int value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithInt:", i)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithInt:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(long l)
+        public static StrongReference<NSNumber> Alloc(long value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithLong:", l)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithLong:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(short s)
+        public static StrongReference<NSNumber> Alloc(short value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithShort:", s)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithShort:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(uint i)
+        public static StrongReference<NSNumber> Alloc(uint value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedInt:", i)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedInt:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(ulong l)
+        public static StrongReference<NSNumber> Alloc(ulong value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedLong:", l)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedLong:", value)));
         }
-        public static StrongReference<NSNumber> Alloc(ushort s)
+        public static StrongReference<NSNumber> Alloc(ushort value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedShort:", s)));
+            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedShort:", value)));
         }
 
-        public static AutoreleasedReference<NSNumber> NumberWith(bool b)
+        public static AutoreleasedReference<NSNumber> NumberWith(bool value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithBool:", b));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithBool:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(char c)
+        public static AutoreleasedReference<NSNumber> NumberWith(char value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithChar:", c));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithChar:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(double d)
+        public static AutoreleasedReference<NSNumber> NumberWith(double value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithDouble:", d));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithDouble:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(float f)
+        public static AutoreleasedReference<NSNumber> NumberWith(float value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithFloat:", f));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithFloat:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(int i)
+        public static AutoreleasedReference<NSNumber> NumberWith(int value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithInt:", i));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithInt:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(long l)
+        public static AutoreleasedReference<NSNumber> NumberWith(long value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithLong:", l));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithLong:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(short s)
+        public static AutoreleasedReference<NSNumber> NumberWith(short value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithShort:", s));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithShort:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(uint i)
+        public static AutoreleasedReference<NSNumber> NumberWith(uint value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedInt:", i));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithUnsignedInt:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(ulong l)
+        public static AutoreleasedReference<NSNumber> NumberWith(ulong value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedLong:", l));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithUnsignedLong:", value);
         }
-        public static AutoreleasedReference<NSNumber> NumberWith(ushort s)
+        public static AutoreleasedReference<NSNumber> NumberWith(ushort value)
         {
-            return new AutoreleasedReference<NSNumber>(Class.AsId.Call<NSNumber>("numberWithUnsignedShort:", s));
+            return Class.AsId.Call<AutoreleasedReference<NSNumber>>("numberWithUnsignedShort:", value);
         }
 
         public Id AsId => _self;
@@ -110,6 +110,50 @@ namespace Gilzoide.ObjectiveC.Foundation
             return _self.ToString();
         }
 
+        public static explicit operator NSNumber(bool value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(char value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(double value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(float value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(int value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(long value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(short value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(uint value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(ulong value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(ushort value)
+        {
+            return NSNumber.NumberWith(value);
+        }
+        public static explicit operator NSNumber(Id obj)
+        {
+            return new NSNumber(obj);
+        }
         public static implicit operator Id(NSNumber n)
         {
             return n._self;

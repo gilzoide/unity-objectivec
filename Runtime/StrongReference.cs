@@ -24,6 +24,10 @@ namespace Gilzoide.ObjectiveC
             return Target.ToString();
         }
 
+        public static explicit operator StrongReference(Id obj)
+        {
+            return new StrongReference(obj);
+        }
         public static implicit operator Id(StrongReference strongReference)
         {
             return strongReference.Target;
@@ -53,6 +57,10 @@ namespace Gilzoide.ObjectiveC
             return Target.ToString();
         }
 
+        public static explicit operator StrongReference<T>(T value)
+        {
+            return new StrongReference<T>(value);
+        }
         public static implicit operator T(StrongReference<T> strongReference)
         {
             return strongReference.Target;

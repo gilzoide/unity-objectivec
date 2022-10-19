@@ -79,6 +79,10 @@ namespace Gilzoide.ObjectiveC.Foundation
             return _self.ToString();
         }
 
+        public static explicit operator NSInvocation(Id obj)
+        {
+            return new NSInvocation(obj);
+        }
         public static implicit operator Id(NSInvocation invocation)
         {
             return invocation._self;
