@@ -59,7 +59,7 @@ namespace Gilzoide.ObjectiveC.Foundation
 
         public IEnumerator<Id> GetEnumerator()
         {
-            return new Enumerator(this);
+            return new NSEnumeratorIEnumerator(_self.Call<NSEnumerator>("objectEnumerator"));
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -79,37 +79,6 @@ namespace Gilzoide.ObjectiveC.Foundation
         public static implicit operator Id(NSArray arr)
         {
             return arr._self;
-        }
-
-        public class Enumerator : IEnumerator<Id>
-        {
-            private NSArray _array;
-            private long _index;
-
-            public Enumerator(NSArray array)
-            {
-                _array = array;
-                _index = -1;
-            }
-
-            public Id Current => _array[_index];
-
-            object IEnumerator.Current => Current;
-
-            public void Dispose()
-            {
-            }
-
-            public bool MoveNext()
-            {
-                _index++;
-                return _index < CFArrayGetCount(_array);
-            }
-
-            public void Reset()
-            {
-                _index = -1;
-            }
         }
     }
 }
