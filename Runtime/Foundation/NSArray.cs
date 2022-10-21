@@ -18,9 +18,17 @@ namespace Gilzoide.ObjectiveC.Foundation
         private Id _self;
 
         public int Count => (int) CFArrayGetCount(this);
-        public Id this[long index] => index >= 0 && index < Count
-            ? CFArrayGetValueAtIndex(this, (long) index)
-            : throw new IndexOutOfRangeException();
+        public Id this[long index]
+        {
+            get
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                return CFArrayGetValueAtIndex(this, index);
+            }
+        }
 
         public NSArray(Id self)
         {
