@@ -67,7 +67,7 @@ namespace Gilzoide.ObjectiveC.Foundation
             {
                 string name = exception.Get<NSString>("name").ToString();
                 string reason = exception.Get<NSString>("reason").ToString();
-                Id userInfo = exception.Get<Id>("userInfo");
+                NSDictionary userInfo = exception.Get<NSDictionary>("userInfo");
                 throw new ObjectiveCException(name, reason, userInfo);
             }
         }
