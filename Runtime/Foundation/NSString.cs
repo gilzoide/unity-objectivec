@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gilzoide.ObjectiveC.Foundation
 {
-    public struct NSString : IId
+    public unsafe struct NSString : IId
     {
         public static readonly Class Class = new Class("NSString");
 
@@ -24,22 +24,25 @@ namespace Gilzoide.ObjectiveC.Foundation
 
         public static StrongReference<NSString> Alloc(string str)
         {
-            Id newString = Runtime.objc_msgSend(Class, "alloc");
-            NSString nsstring = objc_msgSend(newString, "initWithCharacters:length:", str, (ulong) str.Length);
-            return new StrongReference<NSString>(nsstring);
+            fixed (char* ptr = str)
+            {
+                return Class.Alloc<StrongReference<NSString>>("initWithCharacters:length:", (IntPtr) ptr, (ulong) str.Length);
+            }
         }
 
         public static AutoreleasedReference<NSString> StringWith(string str)
         {
-            NSString nsstring = objc_msgSend(Class, "stringWithCharacters:length:", str, (ulong) str.Length);
-            return new AutoreleasedReference<NSString>(nsstring);
+            fixed (char* ptr = str)
+            {
+                return Class.Call<AutoreleasedReference<NSString>>("stringWithCharacters:length:", (IntPtr) ptr, (ulong) str.Length);
+            }
         }
 
         public Id AsId => _self;
 
         public override string ToString()
         {
-            IntPtr dataPtr = Runtime.objc_msgSend(_self, "UTF8String").RawPtr;
+            IntPtr dataPtr = _self.Call<IntPtr>("UTF8String");
             return Marshal.PtrToStringAnsi(dataPtr);
         }
 

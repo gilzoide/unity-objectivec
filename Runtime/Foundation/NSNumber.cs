@@ -23,43 +23,43 @@ namespace Gilzoide.ObjectiveC.Foundation
         }
         public static StrongReference<NSNumber> Alloc(bool value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithBool:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithBool:", value);
         }
         public static StrongReference<NSNumber> Alloc(char value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithChar:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithChar:", value);
         }
         public static StrongReference<NSNumber> Alloc(double value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithDouble:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithDouble:", value);
         }
         public static StrongReference<NSNumber> Alloc(float value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithFloat:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithFloat:", value);
         }
         public static StrongReference<NSNumber> Alloc(int value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithInt:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithInt:", value);
         }
         public static StrongReference<NSNumber> Alloc(long value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithLong:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithLong:", value);
         }
         public static StrongReference<NSNumber> Alloc(short value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithShort:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithShort:", value);
         }
         public static StrongReference<NSNumber> Alloc(uint value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedInt:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithUnsignedInt:", value);
         }
         public static StrongReference<NSNumber> Alloc(ulong value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedLong:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithUnsignedLong:", value);
         }
         public static StrongReference<NSNumber> Alloc(ushort value)
         {
-            return new StrongReference<NSNumber>(new NSNumber(Class.Alloc("initWithUnsignedShort:", value)));
+            return Class.Alloc<StrongReference<NSNumber>>("initWithUnsignedShort:", value);
         }
 
         public static AutoreleasedReference<NSNumber> NumberWith(bool value)

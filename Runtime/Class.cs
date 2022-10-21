@@ -111,6 +111,16 @@ namespace Gilzoide.ObjectiveC
             return Runtime.objc_msgSend(this, "alloc").Call<StrongReference>(initSelector, args);
         }
 
+        public TId Alloc<TId>(Selector initSelector) where TId : struct, IId
+        {
+            return Runtime.objc_msgSend(this, "alloc").Call<TId>(initSelector);
+        }
+
+        public TId Alloc<TId>(Selector initSelector, params ValueType[] args) where TId : struct, IId
+        {
+            return Runtime.objc_msgSend(this, "alloc").Call<TId>(initSelector, args);
+        }
+
         #endregion
 
         public Id AsId => new Id(RawPtr);
