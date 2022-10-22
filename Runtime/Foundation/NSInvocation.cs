@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Unity.Collections.LowLevel.Unsafe;
-using UnityEngine;
 
 namespace Gilzoide.ObjectiveC.Foundation
 {
@@ -45,9 +41,9 @@ namespace Gilzoide.ObjectiveC.Foundation
 
         public void Invoke(params ValueType[] args)
         {
-            using (DisposablePinnedObjectArray pin = new DisposablePinnedObjectArray(args))
+            using (DisposablePinnedObjectList pin = new DisposablePinnedObjectList(args))
             {
-                for (int i = 0; i < pin.Length; i++)
+                for (int i = 0; i < pin.Count; i++)
                 {
                     Runtime.objc_msgSend(_self, "setArgument:atIndex:", pin[i], 2 + i);
                 }
