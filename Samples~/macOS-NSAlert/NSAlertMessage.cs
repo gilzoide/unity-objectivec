@@ -1,21 +1,13 @@
 ﻿using System;
-using UnityEngine;
+#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
 using Gilzoide.ObjectiveC;
 using Gilzoide.ObjectiveC.Foundation;
+#endif
+using UnityEngine;
 
-public class NSAlertMessage : MonoBehaviour
+public static class NSAlertMessage
 {
-    public string Message;
-
-    public void SetMessage(string message)
-    {
-        Message = message;
-    }
-
-    public void Alert()
-    {
-        Alert(Message);
-    }
+    private static Action<Id> _onAlertDismissedAction;
 
     public static void Alert(string message)
     {
@@ -45,8 +37,9 @@ public class NSAlertMessage : MonoBehaviour
             // Create Objective-C blocks from C# Delegates using `Block.FromDelegate`
             // Delegates MUST receive the block as first parameter (e.g. with `Id` type), as per block ABI
             // You are responsible for maintaining the Delegate alive when the block is called
-            Action<Id> callback = _block => Debug.Log("Called after alert completes");
-            Block block = Block.FromDelegate(callback);
+            // The simplest way is to maintain the Delegate in a static or instance field
+            _onAlertDismissedAction = _block => Debug.Log($"Alerted with message: '{message}'");
+            Block block = Block.FromDelegate(_onAlertDismissedAction);
             // Blocks are passed by reference in Objective-C, so we need to get its address first
             // `DisposablePinnedObject` is a disposable wrapper over `GCHandle`
             using (DisposablePinnedObject pinnedBlock = new DisposablePinnedObject(block))
