@@ -1,8 +1,7 @@
-﻿using System;
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+﻿#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX  // || UNITY_IOS (NSAlert is not support in iOS)
+using System;
 using Gilzoide.ObjectiveC;
 using Gilzoide.ObjectiveC.Foundation;
-#endif
 using UnityEngine;
 
 public static class NSAlertMessage
@@ -11,7 +10,6 @@ public static class NSAlertMessage
 
     public static void Alert(string message)
     {
-#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX  // || UNITY_IOS (NSAlert is not support in iOS)
         // Get existing Objective-C classes using `new Class("...")`
         Class NSApplication = new Class("NSApplication");
         // Use `Call` to send messages to an Id or Class using selectors
@@ -50,8 +48,6 @@ public static class NSAlertMessage
                 alert.Call("beginSheetModalForWindow:completionHandler:", keyWindow, blockByReference);
             }
         }
-#else
-        Debug.Log("Unsupported platform");
-#endif
     }
 }
+#endif
